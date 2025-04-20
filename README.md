@@ -126,7 +126,7 @@ python main.py --generate --primary 1 --simulated 15 --visualize-overview --outp
 python main.py --generate --primary 1 --simulated 20 --safety-buffer 75 --visualize-conflicts --save-results
 ```
 
-## Scalability Discussion
+<!-- ## Scalability Discussion
 
 For this system to handle real data from tens of thousands of commercial drones, the following architectural changes would be necessary:
 
@@ -152,7 +152,7 @@ For this system to handle real data from tens of thousands of commercial drones,
 
 6. **Cloud Deployment**:
    - Distribute the system across multiple availability zones
-   - Implement auto-scaling based on demand
+   - Implement auto-scaling based on demand -->
 
 ## Contributing
 
