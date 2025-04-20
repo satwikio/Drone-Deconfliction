@@ -114,7 +114,10 @@ class ParallelRTreeConflictDetector:
         p.variant = index.RT_Star  # Better for dynamic updates
         
         # Create temporary file path for R-tree
-        self.rtree_path = f"rtree_index_{os.getpid()}"
+        # self.rtree_path = f"rtree_index_{os.getpid()}"
+        # self.idx = index.Index(self.rtree_path, properties=p)
+        import uuid
+        self.rtree_path = f"rtree_index_{os.getpid()}_{uuid.uuid4().hex}"
         self.idx = index.Index(self.rtree_path, properties=p)
         
         # Store segments in a simple dict (no locks needed)
@@ -178,6 +181,34 @@ class ParallelRTreeConflictDetector:
         
         return segments
     
+    # def check_mission(self, primary_mission: Mission3D) -> Tuple[str, List[Conflict3D]]:
+    #     """
+    #     Check for conflicts using parallel processing.
+        
+    #     Args:
+    #         primary_mission: The primary mission to check
+            
+    #     Returns:
+    #         Tuple of (status, conflicts) where status is "clear" or "conflict detected"
+    #     """
+    #     logger.info(f"Checking mission {primary_mission.uav_id} for conflicts")
+    #     primary_segments = self._create_trajectory_segments(primary_mission)
+        
+    #     # Collect potential conflicts for each segment using R-tree
+    #     potential_conflicts = []
+    #     for segment in primary_segments:
+    #         hits = list(self.idx.intersection(segment.get_mbr(self.safety_buffer)))
+    #         for hit_id in hits:
+    #             if hit_id in self.trajectory_segments:
+    #                 sim_segment = self.trajectory_segments[hit_id]
+    #                 if segment.uav_id != sim_segment.uav_id:  # Skip self-intersections
+    #                     potential_conflicts.append((segment, sim_segment))
+        
+    #     logger.info(f"Found {len(potential_conflicts)} potential conflicts to check")
+        
+    #     if not potential_conflicts:
+    #         return "clear", []
+    
     def check_mission(self, primary_mission: Mission3D) -> Tuple[str, List[Conflict3D]]:
         """
         Check for conflicts using parallel processing.
@@ -189,22 +220,41 @@ class ParallelRTreeConflictDetector:
             Tuple of (status, conflicts) where status is "clear" or "conflict detected"
         """
         logger.info(f"Checking mission {primary_mission.uav_id} for conflicts")
+        
+        # Create trajectory segments for primary mission
         primary_segments = self._create_trajectory_segments(primary_mission)
+        
+        # Filter out segments that don't overlap with primary mission time window
+        time_overlapping_segments = {}
+        for segment_id, segment in self.trajectory_segments.items():
+            # Skip segments from the same mission
+            if segment.uav_id == primary_mission.uav_id:
+                continue
+                
+            # Skip segments that don't overlap with primary mission time window
+            if segment.end_time <= primary_mission.start_time or segment.start_time >= primary_mission.end_time:
+                continue
+                
+            time_overlapping_segments[segment_id] = segment
+        
+        logger.info(f"Found {len(time_overlapping_segments)} segments with potential time overlap")
         
         # Collect potential conflicts for each segment using R-tree
         potential_conflicts = []
         for segment in primary_segments:
             hits = list(self.idx.intersection(segment.get_mbr(self.safety_buffer)))
             for hit_id in hits:
-                if hit_id in self.trajectory_segments:
-                    sim_segment = self.trajectory_segments[hit_id]
-                    if segment.uav_id != sim_segment.uav_id:  # Skip self-intersections
+                if hit_id in time_overlapping_segments:
+                    sim_segment = time_overlapping_segments[hit_id]
+                    if segment.uav_id != sim_segment.uav_id:  # Double-check to skip self-intersections
                         potential_conflicts.append((segment, sim_segment))
         
         logger.info(f"Found {len(potential_conflicts)} potential conflicts to check")
         
         if not potential_conflicts:
             return "clear", []
+    
+    # Rest of the method remains the same...
         
         # Prepare arguments for parallel processing
         worker_args = [

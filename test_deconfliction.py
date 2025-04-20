@@ -193,11 +193,11 @@ class TestUAVDeconfliction(unittest.TestCase):
     
     def test_multiple_simulated_drones(self):
         """Test scenario with multiple simulated drones."""
-        # Create several simulated missions
+        # Create several simulated missions that will definitely conflict
         for i in range(5):
             sim_waypoints = [
-                Waypoint3D(x=i*50, y=0, z=100),
-                Waypoint3D(x=i*50, y=100, z=100)
+                Waypoint3D(x=50, y=i*20, z=100),  # All will cross the primary path
+                Waypoint3D(x=150, y=i*20, z=100)
             ]
             sim_mission = Mission3D(
                 waypoints=sim_waypoints,
@@ -210,13 +210,13 @@ class TestUAVDeconfliction(unittest.TestCase):
         
         # Create primary mission that crosses all simulated paths
         primary_waypoints = [
-            Waypoint3D(x=0, y=50, z=100),
-            Waypoint3D(x=250, y=50, z=100)
+            Waypoint3D(x=100, y=0, z=100),
+            Waypoint3D(x=100, y=100, z=100)
         ]
         primary_mission = Mission3D(
             waypoints=primary_waypoints,
             start_time=0,
-            end_time=25,
+            end_time=10,
             uav_id="PRIMARY",
             speed=10.0
         )
