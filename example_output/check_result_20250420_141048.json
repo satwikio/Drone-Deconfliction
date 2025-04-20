@@ -1,0 +1,12 @@
+{
+  "mission_id": "PRIMARY_DRONE_1",
+  "status": "clear",
+  "check_time": "20250420_141048",
+  "mission_details": {
+    "start_time": 19.598223367957402,
+    "end_time": 74.12274954294043,
+    "speed": 14.295678181695363,
+    "waypoint_count": 4
+  },
+  "conflicts": []
+}

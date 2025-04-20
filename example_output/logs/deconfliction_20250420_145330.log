@@ -1,0 +1,9 @@
+2025-04-20 14:53:30,977 - uav_deconfliction - INFO - Starting UAV Strategic Deconfliction System example
+2025-04-20 14:53:30,978 - uav_deconfliction - INFO - Generating drone missions
+2025-04-20 14:53:30,996 - uav_deconfliction - INFO - Missions saved to: {'waypoints': 'example_output\\delivery_missions_waypoints_20250420_145330.csv', 'missions': 'example_output\\delivery_missions_details_20250420_145330.csv', 'json': 'example_output\\delivery_missions_raw_20250420_145330.json'}
+2025-04-20 14:54:03,696 - uav_deconfliction - INFO - Overview visualization saved to: example_output\plots\missions_overview.png
+2025-04-20 14:54:03,715 - uav_deconfliction - INFO - Checking conflicts for mission PRIMARY_DRONE_1
+2025-04-20 14:54:05,190 - uav_deconfliction - INFO - Status: clear
+2025-04-20 14:54:05,191 - uav_deconfliction - INFO - Number of conflicts: 0
+2025-04-20 14:54:05,193 - uav_deconfliction - INFO - Check results logged to: example_output\check_result_20250420_145405.json
+2025-04-20 14:54:05,195 - uav_deconfliction - INFO - Example completed successfully

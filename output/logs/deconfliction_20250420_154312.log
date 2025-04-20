@@ -1,0 +1,37 @@
+2025-04-20 15:43:12,480 - uav_deconfliction - INFO - Generating 1 primary and 5 simulated missions
+2025-04-20 15:43:12,486 - uav_deconfliction - INFO - Generated files saved to: {'waypoints': 'output\\delivery_missions_waypoints_20250420_154312.csv', 'missions': 'output\\delivery_missions_details_20250420_154312.csv', 'json': 'output\\delivery_missions_raw_20250420_154312.json'}
+2025-04-20 15:43:12,490 - uav_deconfliction - INFO - Processing primary mission PRIMARY_DRONE_1
+2025-04-20 15:43:12,491 - uav_deconfliction - INFO - Checking conflicts for mission PRIMARY_DRONE_1
+2025-04-20 15:43:14,068 - uav_deconfliction - INFO - Conflict check completed in 1.47 seconds
+2025-04-20 15:43:14,069 - uav_deconfliction - INFO - Status: conflict detected
+2025-04-20 15:43:14,071 - uav_deconfliction - INFO - Number of conflicts: 8
+2025-04-20 15:43:14,071 - uav_deconfliction - INFO - First 5 conflicts:
+2025-04-20 15:43:14,072 - uav_deconfliction - INFO - Conflict 1:
+2025-04-20 15:43:14,072 - uav_deconfliction - INFO -   Time: 32.40s
+2025-04-20 15:43:14,072 - uav_deconfliction - INFO -   Location: (622.0, 738.0, 109.4)
+2025-04-20 15:43:14,072 - uav_deconfliction - INFO -   Between: PRIMARY_DRONE_1 and SIM_DRONE_5
+2025-04-20 15:43:14,073 - uav_deconfliction - INFO -   Distance: 142.1m
+2025-04-20 15:43:14,073 - uav_deconfliction - INFO - Conflict 2:
+2025-04-20 15:43:14,073 - uav_deconfliction - INFO -   Time: 32.46s
+2025-04-20 15:43:14,074 - uav_deconfliction - INFO -   Location: (622.8, 738.8, 109.3)
+2025-04-20 15:43:14,074 - uav_deconfliction - INFO -   Between: PRIMARY_DRONE_1 and SIM_DRONE_5
+2025-04-20 15:43:14,074 - uav_deconfliction - INFO -   Distance: 141.2m
+2025-04-20 15:43:14,075 - uav_deconfliction - INFO - Conflict 3:
+2025-04-20 15:43:14,075 - uav_deconfliction - INFO -   Time: 33.46s
+2025-04-20 15:43:14,075 - uav_deconfliction - INFO -   Location: (636.3, 752.6, 108.8)
+2025-04-20 15:43:14,076 - uav_deconfliction - INFO -   Between: PRIMARY_DRONE_1 and SIM_DRONE_5
+2025-04-20 15:43:14,076 - uav_deconfliction - INFO -   Distance: 125.8m
+2025-04-20 15:43:14,076 - uav_deconfliction - INFO - Conflict 4:
+2025-04-20 15:43:14,077 - uav_deconfliction - INFO -   Time: 34.46s
+2025-04-20 15:43:14,077 - uav_deconfliction - INFO -   Location: (649.8, 766.4, 108.2)
+2025-04-20 15:43:14,077 - uav_deconfliction - INFO -   Between: PRIMARY_DRONE_1 and SIM_DRONE_5
+2025-04-20 15:43:14,077 - uav_deconfliction - INFO -   Distance: 111.6m
+2025-04-20 15:43:14,078 - uav_deconfliction - INFO - Conflict 5:
+2025-04-20 15:43:14,078 - uav_deconfliction - INFO -   Time: 35.46s
+2025-04-20 15:43:14,078 - uav_deconfliction - INFO -   Location: (663.3, 780.2, 107.6)
+2025-04-20 15:43:14,078 - uav_deconfliction - INFO -   Between: PRIMARY_DRONE_1 and SIM_DRONE_5
+2025-04-20 15:43:14,079 - uav_deconfliction - INFO -   Distance: 99.3m
+2025-04-20 15:43:14,080 - uav_deconfliction - INFO - Conflicts logged to: output\conflicts_20250420_154314.json
+2025-04-20 15:43:14,081 - uav_deconfliction - INFO - Check results logged to: output\check_result_20250420_154314.json
+2025-04-20 15:44:52,581 - uav_deconfliction - INFO - Conflict visualization saved to: output\plots\conflicts_20250420_154314.png
+2025-04-20 15:44:52,710 - uav_deconfliction - INFO - UAV Strategic Deconfliction System completed successfully
