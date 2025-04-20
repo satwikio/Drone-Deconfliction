@@ -117,7 +117,7 @@ optional arguments:
 ### Example 1: Generate and Visualize Missions
 
 ```
-python main.py --generate --primary 2 --simulated 15 --visualize-overview --output-dir results
+python main.py --generate --primary 1 --simulated 15 --visualize-overview --output-dir results
 ```
 
 ### Example 2: Detect and Visualize Conflicts
